@@ -23,6 +23,22 @@
         .section-header span { color: #3b82f6; }
         .card-title { color: #94a3b8; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
         .list-bullet { list-style-type: disc; padding-left: 1.5rem; color: #cbd5e1; }
+        /* Image container styling */
+        .img-display {
+            background: #0f172a;
+            border: 2px solid #334155;
+            border-radius: 1rem;
+            padding: 1rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+        }
+        .diagram-caption {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-top: 0.75rem;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+        }
     </style>
 </head>
 <body onload="startTimer()">
@@ -38,7 +54,7 @@
         <div class="flex items-center gap-4">
             <div class="bg-white p-1 rounded flex items-center justify-center shadow-md" style="height: 48px; width: 48px;">
                 <!-- Replace with your college logo -->
-                <img src="mujlogo.jpg" alt="MUJ" class="h-full w-auto object-contain">
+                <img src="mujlogo.jpg" alt="MUJ" class="h-full w-auto object-contain" onerror="this.src='https://via.placeholder.com/50?text=MUJ'">
             </div>
             <div class="flex flex-col text-left">
                 <span class="text-xl font-black text-white leading-none uppercase tracking-tighter">PBL <span class="text-blue-500 italic">2026</span></span>
@@ -68,12 +84,14 @@
             <div class="flex flex-col md:flex-row justify-center gap-8 mt-12 text-slate-300">
                 <div>
                     <p class="text-xs uppercase tracking-widest text-slate-500 mb-2">Submitted By</p>
-                    <p class="font-bold text-xl">[Your Name]</p>
-                    <p class="text-sm text-slate-400">[Registration No.]</p>
+                    <p class="font-bold text-xl">Rachit Yadav</p>
+                    <p class="text-sm text-slate-400">23FE10CSE00601</p>
+                    <p class="font-bold text-xl mt-2">Kushagra Joshi</p>
+                    <p class="text-sm text-slate-400">23FE10CSE00553</p>
                 </div>
                 <div>
                     <p class="text-xs uppercase tracking-widest text-slate-500 mb-2">Supervised By</p>
-                    <p class="font-bold text-xl">[Guide Name]</p>
+                    <p class="font-bold text-xl">Dr Rishav Dubey</p>
                 </div>
             </div>
         </section>
@@ -204,34 +222,24 @@
         <section id="methodology" class="space-y-16">
             <h2 class="section-header"><span>Methodology</span> (4 parts)</h2>
             
-            <!-- 1. System Architecture -->
+            <!-- 1. System Architecture – Figure 1 (img1.png) -->
             <div class="glass p-10 rounded-[2.5rem]">
                 <h3 class="text-blue-400 text-lg font-bold mb-4">1. System Architecture</h3>
-                <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="grid md:grid-cols-2 gap-8 items-start">
                     <div>
                         <p class="text-slate-300 mb-4">Core components: nRF52840 MCU (BLE 5.0), LIS3DH accelerometer, piezo buzzer, CR2032 coin cell, tamper switch.</p>
                         <p class="text-slate-400 text-sm">nRF52 chosen for 1.5µA sleep, DC‑DC converter, and no brown‑out spikes.</p>
                     </div>
-                    <div class="bg-slate-800/50 p-4 rounded-2xl">
-                        <pre class="text-xs text-slate-300 font-mono whitespace-pre-wrap">
-┌─────────────────────────┐
-│      nRF52840 MCU       │
-│  • Sleep 1.5µA          │
-│  • Active <8mA (DCDC)   │
-└───────────┬─────────────┘
-    ┌───────┴───────┬───────────┐
-    ▼               ▼           ▼
-┌─────────┐   ┌─────────┐   ┌─────────┐
-│ LIS3DH  │  │ Piezo   │  │ CR2032  │
-│ Accel   │  │ Buzzer  │  │ 220mAh  │
-│ (2µA)   │  │ (45mA)  │  │ 2+ years│
-└─────────┘   └─────────┘   └─────────┘
-                        </pre>
+                    <div>
+                        <div class="img-display">
+                            <img src="img1.png" alt="Figure 1: System Architecture" class="w-full h-auto rounded-lg">
+                        </div>
+                        <p class="diagram-caption">Figure 1: An Architectural Framework of Smart Bike Anti-Forget / Anti-Theft Tag.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- 2. Two‑Stage Alarm Logic -->
+            <!-- 2. Two‑Stage Alarm Logic – Figure 2 (img2.png) -->
             <div class="glass p-10 rounded-[2.5rem]">
                 <h3 class="text-blue-400 text-lg font-bold mb-4">2. Two‑Stage Alarm State Machine</h3>
                 <div class="grid md:grid-cols-2 gap-8">
@@ -242,21 +250,11 @@
                             <li>False alarm reduction: 94% reduction compared to binary alarms.</li>
                         </ul>
                     </div>
-                    <div class="bg-slate-800/50 p-4 rounded-2xl">
-                        <pre class="text-xs text-slate-300 font-mono">
-   ARMED_SLEEP
-        │ wake on interrupt
-        ▼
-   ANALYZE (0.5‑1s)
-        │
-   ┌────┴────┐
-   │         │
- short    long/intense
-   │         │
-   ▼         ▼
-Stage1    Stage2
- (chirp)   (siren+alert)
-        </pre>
+                    <div>
+                        <div class="img-display">
+                            <img src="img2.png" alt="Figure 2: Two-Stage Alarm State Machine" class="w-full h-auto rounded-lg">
+                        </div>
+                        <p class="diagram-caption">Figure 2: To show the flowchart diagram of Two-Stage Alarm State Machine.</p>
                     </div>
                 </div>
             </div>
@@ -275,13 +273,12 @@ Stage1    Stage2
                         <p class="mt-4 text-slate-400 text-sm">Tested success rate: 92% in real‑world conditions.</p>
                     </div>
                     <div class="bg-slate-800/50 p-4 rounded-2xl">
-                        <!-- Fixed canvas dimensions -->
                         <canvas id="rssiChart" width="300" height="150" style="max-width:100%; height:auto; display:block;"></canvas>
                     </div>
                 </div>
             </div>
 
-            <!-- 4. Power Architecture (nRF52 vs ESP32) -->
+            <!-- 4. Power Architecture -->
             <div class="glass p-10 rounded-[2.5rem]">
                 <h3 class="text-blue-400 text-lg font-bold mb-4">4. Ultra‑Low‑Power: nRF52 vs ESP32</h3>
                 <div class="overflow-x-auto">
@@ -404,18 +401,23 @@ Stage1    Stage2
             </div>
         </section>
 
-        <!-- TEAM / ACADEMIC CREDITS -->
+        <!-- TEAM / ACADEMIC CREDITS (updated with both members) -->
         <section id="team" class="text-center pt-10 border-t border-slate-900">
             <h2 class="text-[10px] font-black text-slate-600 uppercase tracking-[0.5em] mb-12">Academic Credits</h2>
             <div class="flex flex-wrap justify-center gap-10">
                 <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-blue-600">
                     <p class="text-[9px] font-bold text-blue-500 mb-2 uppercase tracking-widest">Project Guide</p>
-                    <p class="font-black text-xl text-slate-100">[Guide Name]</p>
+                    <p class="font-black text-xl text-slate-100">Dr Rishav Dubey</p>
                 </div>
                 <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-slate-700">
-                    <p class="text-[9px] font-bold text-slate-400 mb-2 uppercase tracking-widest">Team Member</p>
-                    <p class="font-black text-xl text-slate-100">[Your Name]</p>
-                    <p class="text-[10px] text-slate-500 mt-1">[Reg No.]</p>
+                    <p class="text-[9px] font-bold text-slate-400 mb-2 uppercase tracking-widest">Team Member 1</p>
+                    <p class="font-black text-xl text-slate-100">Rachit Yadav</p>
+                    <p class="text-[10px] text-slate-500 mt-1">23FE10CSE00601</p>
+                </div>
+                <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-slate-700">
+                    <p class="text-[9px] font-bold text-slate-400 mb-2 uppercase tracking-widest">Team Member 2</p>
+                    <p class="font-black text-xl text-slate-100">Kushagra Joshi</p>
+                    <p class="text-[10px] text-slate-500 mt-1">23FE10CSE00553</p>
                 </div>
             </div>
         </section>
