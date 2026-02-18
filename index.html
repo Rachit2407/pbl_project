@@ -298,7 +298,7 @@
             </div>
         </section>
 
-        <!-- RESULTS -->
+        <!-- RESULTS (modified: removed alarm accuracy and anti-forget success) -->
         <section id="results" class="glass p-12 rounded-[3.5rem]">
             <h2 class="section-header"><span>Results</span> & Analysis</h2>
             <div class="grid md:grid-cols-2 gap-12">
@@ -316,31 +316,14 @@
                         <canvas id="powerChart" width="300" height="150" style="max-width:100%; height:auto; display:block;"></canvas>
                     </div>
                 </div>
-                <!-- Alarm accuracy -->
-                <div>
-                    <h3 class="text-blue-400 font-bold mb-4">Alarm Detection Accuracy</h3>
-                    <table class="w-full text-sm text-left text-slate-300">
-                        <tr><th>Event</th><th>Accuracy</th></tr>
-                        <tr><td>Wind noise</td><td>100%</td></tr>
-                        <tr><td>Bump</td><td>95%</td></tr>
-                        <tr><td>Sawing</td><td>95%</td></tr>
-                        <tr><td>Lift</td><td>100%</td></tr>
-                        <tr><td class="font-bold">Overall</td><td>96%</td></tr>
-                    </table>
-                    <p class="text-xs text-slate-500 mt-4">False alarm reduction: 94% vs binary alarms.</p>
-                </div>
+                <!-- Empty column (right side) – keeping layout balanced -->
+                <div></div>
             </div>
-            <div class="mt-8 grid md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="text-purple-400 font-bold mb-2">Anti‑Forget Success Rate</h3>
-                    <p class="text-3xl font-black text-purple-400">92%</p>
-                    <p class="text-sm text-slate-400">across 50 walk‑away tests</p>
-                </div>
-                <div>
-                    <h3 class="text-purple-400 font-bold mb-2">Notification Latency</h3>
-                    <p class="text-sm">Alarm → phone: <span class="text-xl font-bold">0.8s avg</span></p>
-                    <p class="text-sm">RSSI alert: <span class="text-xl font-bold">2.3s avg</span></p>
-                </div>
+            <!-- Notification latency now alone (no anti-forget) -->
+            <div class="mt-8">
+                <h3 class="text-purple-400 font-bold mb-2">Notification Latency</h3>
+                <p class="text-sm">Alarm → phone: <span class="text-xl font-bold">0.8s avg</span></p>
+                <p class="text-sm">RSSI alert: <span class="text-xl font-bold">2.3s avg</span></p>
             </div>
         </section>
 
@@ -349,7 +332,8 @@
             <h2 class="section-header"><span>Outcome</span></h2>
             <div class="grid md:grid-cols-2 gap-10">
                 <div>
-                    <h3 class="text-green-400 font-bold mb-3">Achieved This Semester</h3>
+                    <!-- Changed heading from "Achieved This Semester" to "Achieved till now" -->
+                    <h3 class="text-green-400 font-bold mb-3">Achieved till now</h3>
                     <ul class="list-bullet text-slate-300">
                         <li>System design & component selection</li>
                         <li>Two‑stage alarm logic development</li>
@@ -359,7 +343,8 @@
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-blue-400 font-bold mb-3">Planned (Next Semester)</h3>
+                    <!-- Changed heading from "Planned (Next Semester)" to "by end of this semester" -->
+                    <h3 class="text-blue-400 font-bold mb-3">by end of this semester</h3>
                     <ul class="list-bullet text-slate-300">
                         <li><span class="text-yellow-300">Patent filing</span> – provisional application covering two‑stage alarm + anti‑forget + nRF52 coin‑cell architecture</li>
                         <li>Research paper draft</li>
