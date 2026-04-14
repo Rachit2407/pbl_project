@@ -39,6 +39,20 @@
             letter-spacing: 0.05em;
             font-weight: 500;
         }
+        /* Smooth scroll offset for fixed header */
+        html {
+            scroll-padding-top: 80px;
+        }
+        /* TOC item hover effect */
+        .toc-item {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .toc-item:hover {
+            background-color: rgba(59, 130, 246, 0.2);
+            transform: translateY(-2px);
+            border-color: #3b82f6;
+        }
     </style>
 </head>
 <body onload="startTimer()">
@@ -96,23 +110,23 @@
             </div>
         </section>
 
-        <!-- OUTLINE -->
+        <!-- TABLE OF CONTENTS (CLICKABLE OUTLINE) -->
         <section class="glass p-12 rounded-[2.5rem]">
-            <h2 class="section-header"><span>Outline</span></h2>
+            <h2 class="section-header"><span>Table of Contents</span></h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                <div class="p-4 bg-slate-800/30 rounded-2xl">Introduction</div>
-                <div class="p-4 bg-slate-800/30 rounded-2xl">Literature Review</div>
-                <div class="p-4 bg-slate-800/30 rounded-2xl">Problem Statement</div>
-                <div class="p-4 bg-slate-800/30 rounded-2xl">Proposed Solution</div>
-                <div class="p-4 bg-slate-800/30 rounded-2xl">Objectives</div>
-                <div class="p-4 bg-slate-800/30 rounded-2xl">Methodology (4 parts)</div>
-                <div class="p-4 bg-slate-800/30 rounded-2xl">Results</div>
-                <div class="p-4 bg-slate-800/30 rounded-2xl">Outcome & References</div>
+                <a href="#intro" class="toc-item p-4 bg-slate-800/30 rounded-2xl transition-all no-underline text-slate-200 hover:text-white font-medium">Introduction</a>
+                <a href="#litreview" class="toc-item p-4 bg-slate-800/30 rounded-2xl transition-all no-underline text-slate-200 hover:text-white font-medium">Literature Review</a>
+                <a href="#problem" class="toc-item p-4 bg-slate-800/30 rounded-2xl transition-all no-underline text-slate-200 hover:text-white font-medium">Problem Statement</a>
+                <a href="#solution" class="toc-item p-4 bg-slate-800/30 rounded-2xl transition-all no-underline text-slate-200 hover:text-white font-medium">Proposed Solution</a>
+                <a href="#objectives" class="toc-item p-4 bg-slate-800/30 rounded-2xl transition-all no-underline text-slate-200 hover:text-white font-medium">Objectives</a>
+                <a href="#methodology" class="toc-item p-4 bg-slate-800/30 rounded-2xl transition-all no-underline text-slate-200 hover:text-white font-medium">Methodology (4 parts)</a>
+                <a href="#results" class="toc-item p-4 bg-slate-800/30 rounded-2xl transition-all no-underline text-slate-200 hover:text-white font-medium">Results</a>
+                <a href="#outcome" class="toc-item p-4 bg-slate-800/30 rounded-2xl transition-all no-underline text-slate-200 hover:text-white font-medium">Outcome & References</a>
             </div>
         </section>
 
         <!-- INTRODUCTION (2 slides combined) -->
-        <section id="intro" class="grid md:grid-cols-2 gap-8">
+        <section id="intro" class="grid md:grid-cols-2 gap-8 scroll-mt-24">
             <div class="glass p-10 rounded-[2.5rem]">
                 <h2 class="section-header text-3xl"><span>Introduction</span></h2>
                 <p class="text-slate-300 text-justify mb-4">
@@ -130,31 +144,28 @@
                     </thead>
                     <tbody>
                         <tr><td class="py-2">GPS Trackers</td><td>Expensive, subscriptions, frequent charging, reactive (find after theft)</td></tr>
-                        <tr><td>Passive Tags (AirTag)</td><td>Silent, no deterrence, anti‑stalking aids thieves</td></tr>
-                        <tr><td>Basic Alarms</td><td>False alarms → disabled, rechargeable, binary triggering</td></tr>
+                        <tr><td class="py-2">Passive Tags (AirTag)</td><td>Silent, no deterrence, anti‑stalking aids thieves</td></tr>
+                        <tr><td class="py-2">Basic Alarms</td><td>False alarms → disabled, rechargeable, binary triggering</td></tr>
                     </tbody>
                 </table>
                 <p class="mt-4 text-slate-300"><span class="font-bold text-purple-400">The Gap:</span> No product combines active deterrence + forget‑to‑lock prevention + 2‑year battery + intelligent false‑alarm rejection.</p>
             </div>
         </section>
 
-        <!-- LITERATURE REVIEW (3 slides) -->
-        <section id="litreview" class="space-y-12">
+        <!-- LITERATURE REVIEW -->
+        <section id="litreview" class="space-y-12 scroll-mt-24">
             <h2 class="section-header"><span>Literature Review</span></h2>
             <div class="grid md:grid-cols-3 gap-6">
-                <!-- Patent 1 -->
                 <div class="glass p-6 rounded-3xl">
                     <h3 class="text-blue-400 font-bold text-xs uppercase tracking-widest mb-2">US9512649B2 (2015)</h3>
                     <p class="text-sm text-slate-400 mb-2">Lock‑integrated accelerometer alarm, remote indication.</p>
                     <p class="text-xs text-slate-500"><span class="text-red-400">Limitations:</span> Binary alarm only, no BLE proximity, no power optimisation.</p>
                 </div>
-                <!-- Patent 2 -->
                 <div class="glass p-6 rounded-3xl">
                     <h3 class="text-blue-400 font-bold text-xs uppercase tracking-widest mb-2">WO2011056015A9 (2010)</h3>
                     <p class="text-sm text-slate-400 mb-2">GPS + multi‑sensor frame‑integrated tracker.</p>
                     <p class="text-xs text-slate-500"><span class="text-red-400">Limitations:</span> High power, complex installation, no two‑stage alarm, no proximity tether.</p>
                 </div>
-                <!-- Patent 3 -->
                 <div class="glass p-6 rounded-3xl">
                     <h3 class="text-blue-400 font-bold text-xs uppercase tracking-widest mb-2">US6060982A (2000)</h3>
                     <p class="text-sm text-slate-400 mb-2">Shock sensor + remote receiver (expired).</p>
@@ -183,16 +194,16 @@
             </div>
         </section>
 
-        <!-- PROBLEM STATEMENT (one line) -->
-        <section id="problem" class="glass p-12 rounded-[2.5rem] text-center">
+        <!-- PROBLEM STATEMENT (UPDATED CONTENT) -->
+        <section id="problem" class="glass p-12 rounded-[2.5rem] text-center scroll-mt-24">
             <h2 class="section-header"><span>Problem Statement</span></h2>
-            <p class="text-xl md:text-2xl text-slate-200 italic max-w-4xl mx-auto leading-relaxed">
-                "To develop a low‑power, retrofit bicycle security system that actively prevents theft through intelligent two‑stage alarming and eliminates human error via proximity‑based 'forget‑to‑lock' alerts, while achieving multi‑year battery life on a single coin cell."
+            <p class="text-xl md:text-2xl text-slate-200 max-w-4xl mx-auto leading-relaxed">
+                The existing market lacks a unified device that simultaneously addresses active theft deterrence, proactive human-error prevention (the "forgotten lock" scenario), and multi-year maintenance-free operation on a coin cell battery. There is a clear gap for a solution that combines the battery longevity of passive trackers with the active alarm capabilities of wired security systems, delivered in a low-cost, cross-platform, sealed package.
             </p>
         </section>
 
         <!-- PROPOSED SOLUTION + OBJECTIVES -->
-        <section id="solution" class="grid md:grid-cols-2 gap-8">
+        <section id="solution" class="grid md:grid-cols-2 gap-8 scroll-mt-24">
             <div class="glass p-10 rounded-[2.5rem]">
                 <h2 class="section-header text-3xl"><span>Proposed Solution</span></h2>
                 <p class="text-slate-300 text-justify">
@@ -206,7 +217,7 @@
                     <li><span class="text-blue-400 font-semibold">Smartphone Relay:</span> Instant notifications via BLE, no subscription.</li>
                 </ul>
             </div>
-            <div class="glass p-10 rounded-[2.5rem]">
+            <div id="objectives" class="glass p-10 rounded-[2.5rem] scroll-mt-24">
                 <h2 class="section-header text-3xl"><span>Objectives</span></h2>
                 <ol class="list-decimal list-inside space-y-4 text-slate-300">
                     <li>Design two‑stage alarm logic using MEMS accelerometer with duration/intensity thresholds.</li>
@@ -218,11 +229,11 @@
             </div>
         </section>
 
-        <!-- PROPOSED METHODOLOGY (4 slides) -->
-        <section id="methodology" class="space-y-16">
+        <!-- METHODOLOGY (4 parts) -->
+        <section id="methodology" class="space-y-16 scroll-mt-24">
             <h2 class="section-header"><span>Methodology</span> (4 parts)</h2>
             
-            <!-- 1. System Architecture – Figure 1 (img1.png) -->
+            <!-- 1. System Architecture -->
             <div class="glass p-10 rounded-[2.5rem]">
                 <h3 class="text-blue-400 text-lg font-bold mb-4">1. System Architecture</h3>
                 <div class="grid md:grid-cols-2 gap-8 items-start">
@@ -239,7 +250,7 @@
                 </div>
             </div>
 
-            <!-- 2. Two‑Stage Alarm Logic – Figure 2 (img2.png) -->
+            <!-- 2. Two‑Stage Alarm Logic -->
             <div class="glass p-10 rounded-[2.5rem]">
                 <h3 class="text-blue-400 text-lg font-bold mb-4">2. Two‑Stage Alarm State Machine</h3>
                 <div class="grid md:grid-cols-2 gap-8">
@@ -247,7 +258,7 @@
                         <ul class="list-bullet space-y-2 text-slate-300">
                             <li><span class="text-blue-300">Stage 1 (Warning):</span> Short vibration (<0.5s, <1.2G) → 200ms chirp, return to sleep.</li>
                             <li><span class="text-blue-300">Stage 2 (Full Alarm):</span> Vibration >2s or >2G → 100dB siren + phone alert, wait for disarm.</li>
-                            <li>False alarm reduction: 94% reduction compared to binary alarms.</li>
+                            <li>False alarm reduction: Significant reduction compared to binary alarms.</li>
                         </ul>
                     </div>
                     <div>
@@ -270,7 +281,7 @@
                             <li>Reset threshold: -80dBm</li>
                             <li>Only alert if bike is UNLOCKED</li>
                         </ul>
-                        <p class="mt-4 text-slate-400 text-sm">Tested success rate: 92% in real‑world conditions.</p>
+                        
                     </div>
                     <div class="bg-slate-800/50 p-4 rounded-2xl">
                         <canvas id="rssiChart" width="300" height="150" style="max-width:100%; height:auto; display:block;"></canvas>
@@ -298,11 +309,10 @@
             </div>
         </section>
 
-        <!-- RESULTS (modified: removed alarm accuracy and anti-forget success) -->
-        <section id="results" class="glass p-12 rounded-[3.5rem]">
+        <!-- RESULTS -->
+        <section id="results" class="glass p-12 rounded-[3.5rem] scroll-mt-24">
             <h2 class="section-header"><span>Results</span> & Analysis</h2>
             <div class="grid md:grid-cols-2 gap-12">
-                <!-- Power measurements -->
                 <div>
                     <h3 class="text-blue-400 font-bold mb-4">Power Consumption</h3>
                     <table class="w-full text-sm text-left text-slate-300">
@@ -316,10 +326,8 @@
                         <canvas id="powerChart" width="300" height="150" style="max-width:100%; height:auto; display:block;"></canvas>
                     </div>
                 </div>
-                <!-- Empty column (right side) – keeping layout balanced -->
                 <div></div>
             </div>
-            <!-- Notification latency now alone (no anti-forget) -->
             <div class="mt-8">
                 <h3 class="text-purple-400 font-bold mb-2">Notification Latency</h3>
                 <p class="text-sm">Alarm → phone: <span class="text-xl font-bold">0.8s avg</span></p>
@@ -328,26 +336,23 @@
         </section>
 
         <!-- OUTCOME (achievements + patent) -->
-        <section id="outcome" class="glass p-12 rounded-[3.5rem]">
+        <section id="outcome" class="glass p-12 rounded-[3.5rem] scroll-mt-24">
             <h2 class="section-header"><span>Outcome</span></h2>
             <div class="grid md:grid-cols-2 gap-10">
                 <div>
-                    <!-- Changed heading from "Achieved This Semester" to "Achieved till now" -->
                     <h3 class="text-green-400 font-bold mb-3">Achieved till now</h3>
                     <ul class="list-bullet text-slate-300">
+                        <li>Patent filed</li>
                         <li>System design & component selection</li>
                         <li>Two‑stage alarm logic development</li>
                         <li>Anti‑forget proximity algorithm</li>
-                        <li>Breadboard prototype & power measurements</li>
-                        <li>Prior art search & patent landscape analysis</li>
+                        <li>Arduino based prototype</li>
                     </ul>
                 </div>
                 <div>
-                    <!-- Changed heading from "Planned (Next Semester)" to "by end of this semester" -->
-                    <h3 class="text-blue-400 font-bold mb-3">by end of this semester</h3>
+                    <h3 class="text-blue-400 font-bold mb-3">Future Work</h3>
                     <ul class="list-bullet text-slate-300">
-                        <li><span class="text-yellow-300">Patent filing</span> – provisional application covering two‑stage alarm + anti‑forget + nRF52 coin‑cell architecture</li>
-                        <li>Research paper draft</li>
+                        <li>Integrating actual hardware</li>
                         <li>Custom PCB design</li>
                         <li>Field testing with 10 prototypes</li>
                         <li>Firmware copyright registration</li>
@@ -355,8 +360,8 @@
                 </div>
             </div>
             <div class="mt-8 p-6 bg-blue-900/20 rounded-2xl border border-blue-500">
-                <p class="text-lg font-bold">Patent Status:</p>
-                <p class="text-slate-300">Provisional patent to be filed by April 2026 covering:</p>
+                <p class="text-lg font-bold">Patent Status: Filed</p>
+                <p class="text-slate-300">Patent filed covering:</p>
                 <p class="text-sm italic text-slate-400">"Method for bicycle security using two‑stage accelerometer‑based alarm, RSSI hysteresis proximity tether, and nRF52 ultra‑low‑power architecture."</p>
             </div>
         </section>
@@ -381,12 +386,11 @@
             <h2 class="text-5xl font-black mb-8">Thank You</h2>
             <p class="text-slate-400 mb-12">Questions?</p>
             <div class="flex justify-center gap-8 text-sm text-slate-500">
-                <span><i class="far fa-envelope mr-2"></i> [your.email@example.com]</span>
-                <span><i class="fas fa-phone-alt mr-2"></i> [contact]</span>
+               
             </div>
         </section>
 
-        <!-- TEAM / ACADEMIC CREDITS (updated with both members) -->
+        <!-- TEAM / ACADEMIC CREDITS -->
         <section id="team" class="text-center pt-10 border-t border-slate-900">
             <h2 class="text-[10px] font-black text-slate-600 uppercase tracking-[0.5em] mb-12">Academic Credits</h2>
             <div class="flex flex-wrap justify-center gap-10">
@@ -424,10 +428,10 @@
                 let s = sec % 60;
                 document.getElementById('displayTime').innerText = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
                 
-                if (sec >= 480 && sec < 600) { // 8-10 Mins Warning
+                if (sec >= 480 && sec < 600) {
                     document.getElementById('timerContainer').classList.add('timer-warning');
                     document.getElementById('timerIcon').classList.replace('fa-hourglass-start', 'fa-hourglass-half');
-                } else if (sec >= 600) { // 10 Mins Stop
+                } else if (sec >= 600) {
                     clearInterval(timer);
                     document.getElementById('timerContainer').classList.replace('timer-warning', 'timer-stop');
                     document.getElementById('displayTime').innerText = "10:00";
@@ -471,7 +475,7 @@
                 data: {
                     labels: ['ESP32-C3', 'nRF52840'],
                     datasets: [{
-                        data: [6, 24], // months
+                        data: [6, 24],
                         backgroundColor: ['#ef4444', '#3b82f6'],
                         borderRadius: 8
                     }]
